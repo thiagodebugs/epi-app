@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import NextLink from "next/link";
 
 export default function MyCard({ item }) {
   const { id, name, description, validity } = item;
@@ -28,7 +29,9 @@ export default function MyCard({ item }) {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "end" }}>
-        <Button size="small">Editar</Button>
+        <Button size="small" component={NextLink} href={`/epi/${id}`}>
+          Editar
+        </Button>
         <Button size="small">Deletar</Button>
       </CardActions>
     </Card>
