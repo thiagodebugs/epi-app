@@ -1,3 +1,4 @@
+"use client";
 import { styled, alpha } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
