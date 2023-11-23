@@ -7,8 +7,27 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 
-export default function MyCard({ item }) {
+export default function MyCard({ item, refresh }) {
   const { id, name, description, validity } = item;
+
+  const handleDelete = async () => {
+    //confirm
+    const confirm = window.confirm("Deseja realmente deletar o EPI?");
+    if (!confirm) return;
+    try {
+      const response = await fetch(`http://localhost:9191/epi/${id}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      console.log(data);
+      alert("EPI deletado com sucesso");
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao deletar o EPI");
+    }
+    refresh();
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -32,7 +51,9 @@ export default function MyCard({ item }) {
         <Button size="small" component={NextLink} href={`/epi/${id}`}>
           Editar
         </Button>
-        <Button size="small">Deletar</Button>
+        <Button size="small" onClick={handleDelete}>
+          Deletar
+        </Button>
       </CardActions>
     </Card>
   );

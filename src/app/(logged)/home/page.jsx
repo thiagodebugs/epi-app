@@ -79,7 +79,7 @@ export default function Home() {
           <Grid container spacing={2}>
             {dataEpi.map((item) => (
               <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-                <MyCard item={item} />
+                <MyCard item={item} refresh={handleFetch} />
               </Grid>
             ))}
           </Grid>
