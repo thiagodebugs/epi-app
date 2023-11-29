@@ -19,7 +19,6 @@ export default function MyCardEpi({ item, refresh }) {
         method: "DELETE",
       });
       const data = await response.json();
-      console.log(data);
       alert("EPI deletado com sucesso");
     } catch (error) {
       console.error(error);
