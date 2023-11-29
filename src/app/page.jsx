@@ -4,6 +4,7 @@ import { Container, Button, Link, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import NextLink from "next/link";
 import { Box } from "@mui/system";
+import { Logo } from "@/components";
 
 export default function Login() {
   const [values, setValues] = useState({
@@ -25,9 +26,7 @@ export default function Login() {
       >
         {/* Logo */}
         <Box>
-          <Typography variant="h4" component="h1">
-            {"${Logo}"}
-          </Typography>
+          <Logo />
         </Box>
 
         {/* Form Login */}
@@ -64,7 +63,9 @@ export default function Login() {
             }
           />
           <Button
-            type="submit"
+            component={NextLink}
+            href="/home"
+            // type="submit"
             variant="contained"
             size="large"
             sx={{ mt: 3, mb: 2 }}
