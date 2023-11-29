@@ -1,6 +1,6 @@
 "use client";
 
-import { Navbar, MyCard, MySearch } from "@/components";
+import { Navbar, MyCardEpi, MySearch } from "@/components";
 import SyncIcon from "@mui/icons-material/Sync";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddIcon from "@mui/icons-material/Add";
@@ -79,7 +79,7 @@ export default function Home() {
           <Grid container spacing={2}>
             {dataEpi.map((item) => (
               <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-                <MyCard item={item} refresh={handleFetch} />
+                <MyCardEpi item={item} refresh={handleFetch} />
               </Grid>
             ))}
           </Grid>
