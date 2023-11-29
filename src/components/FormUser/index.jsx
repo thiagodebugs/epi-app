@@ -1,22 +1,35 @@
 "use client";
 
-import { Button, Container, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  Container,
+  Stack,
+  TextField,
+  Autocomplete,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function FormUser({ user }) {
   const [values, setValues] = useState({
     id: "",
     name: "",
-    status: true,
+    status: {
+      label: "Inativo",
+      value: false,
+    },
     role: "",
   });
 
   useEffect(() => {
     if (user) {
+      console.log(user);
       setValues({
         id: user.id,
         name: user.name,
-        status: user.status,
+        status: {
+          label: user.status ? "Ativo" : "Inativo",
+          value: user.status,
+        },
         role: user.role,
       });
     }
@@ -73,17 +86,6 @@ export default function FormUser({ user }) {
             }
           />
           <TextField
-            name="status"
-            label="Status"
-            variant="outlined"
-            fullWidth
-            required
-            value={values.status}
-            onChange={(event) =>
-              setValues({ ...values, status: event.target.value })
-            }
-          />
-          <TextField
             name="role"
             label="Função"
             variant="outlined"
@@ -92,6 +94,22 @@ export default function FormUser({ user }) {
             onChange={(event) =>
               setValues({ ...values, role: event.target.value })
             }
+          />
+          <Autocomplete
+            options={[
+              { label: "Ativo", value: true },
+              { label: "Inativo", value: false },
+            ]}
+            getOptionLabel={(option) => option.label}
+            id="controlled-demo"
+            value={values.status?.value}
+            onChange={(event, newValue) => {
+              setValues({ ...values, status: newValue.value });
+            }}
+            isOptionEqualToValue={(option, selected) =>
+              option?.value === selected?.value
+            }
+            renderInput={(params) => <TextField {...params} label="Status" />}
           />
           <Button variant="contained" fullWidth type="submit">
             Enviar
