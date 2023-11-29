@@ -7,7 +7,6 @@ import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -18,6 +17,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
+import GroupIcon from "@mui/icons-material/Group";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Tooltip from "@mui/material/Tooltip";
 import NextLink from "next/link";
@@ -95,7 +95,6 @@ export default function Navbar({ children }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
-  console.log(pathname);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -183,7 +182,7 @@ export default function Navbar({ children }) {
                   justifyContent: "center",
                 }}
               >
-                <HomeIcon />
+                <GroupIcon />
               </ListItemIcon>
               <ListItemText primary="Usuários" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
