@@ -26,7 +26,6 @@ export default function Home() {
     try {
       const response = await fetch("http://localhost:9191/user");
       const data = await response.json();
-      console.log(data);
       setDataUser(data);
       setDataUserDefault(data);
     } catch (error) {
