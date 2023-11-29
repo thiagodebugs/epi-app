@@ -8,7 +8,7 @@ export default function FormEpi({ epi }) {
     id: "",
     name: "",
     description: "",
-    validity: "",
+    validity: new Date().toJSON().slice(0, 10),
   });
 
   useEffect(() => {
@@ -17,7 +17,9 @@ export default function FormEpi({ epi }) {
         id: epi.id,
         name: epi.name,
         description: epi.description,
-        validity: epi.validity,
+        validity: epi.validity
+          ? epi.validity
+          : new Date().toJSON().slice(0, 10),
       });
     }
   }, [epi]);
@@ -34,7 +36,6 @@ export default function FormEpi({ epi }) {
           body: JSON.stringify(values),
         });
         const data = await response.json();
-        console.log(data);
         alert("EPI atualizado com sucesso");
       } catch (error) {
         console.error(error);
@@ -50,7 +51,6 @@ export default function FormEpi({ epi }) {
           body: JSON.stringify(values),
         });
         const data = await response.json();
-        console.log(data);
         alert("EPI cadastrado com sucesso");
       } catch (error) {
         console.error(error);
@@ -86,6 +86,7 @@ export default function FormEpi({ epi }) {
             }
           />
           <TextField
+            type="date"
             name="validity"
             label="Validade"
             variant="outlined"
