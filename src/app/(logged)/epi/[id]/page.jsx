@@ -3,7 +3,7 @@
 import { FormEpi } from "@/components";
 import { useEffect, useState } from "react";
 
-export default function EditEpi({ params }) {
+export default function ChangeEpi({ params }) {
   const [dataEpi, setDataEpi] = useState(null);
 
   useEffect(() => {
