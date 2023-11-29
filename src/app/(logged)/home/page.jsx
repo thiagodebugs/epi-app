@@ -1,18 +1,14 @@
 "use client";
 
-import { Navbar, MyCardEpi, MySearch } from "@/components";
+import { MyCardEpi, MySearch } from "@/components";
 import SyncIcon from "@mui/icons-material/Sync";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
-  Button,
   Container,
   Divider,
   Grid,
   IconButton,
-  InputAdornment,
-  TextField,
   Tooltip,
 } from "@mui/material";
 import { useEffect, useState } from "react";
