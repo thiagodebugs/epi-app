@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 
-export default function MyCard({ item, refresh }) {
+export default function MyCardEpi({ item, refresh }) {
   const { id, name, description, validity } = item;
 
   const handleDelete = async () => {
@@ -37,13 +37,18 @@ export default function MyCard({ item, refresh }) {
         image={`https://source.unsplash.com/random/?ppe=${id}`}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" noWrap>
           {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary" gutterBottom>
-          Validade: {validity ? validity : "00/00/0000"}
+        <Typography variant="body2" color="text.secondary" gutterBottom noWrap>
+          Validade:{" "}
+          {validity
+            ? new Date(validity).toLocaleDateString("pt-BR", {
+                timeZone: "UTC",
+              })
+            : "00/00/0000"}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" noWrap>
           {description}
         </Typography>
       </CardContent>
