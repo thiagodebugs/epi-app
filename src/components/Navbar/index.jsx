@@ -22,6 +22,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Tooltip from "@mui/material/Tooltip";
 import NextLink from "next/link";
 import Logo from "@/components/Logo";
+import { usePathname } from "next/navigation";
 
 const drawerWidth = 240;
 
@@ -90,9 +91,11 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function Navbar({ children, option }) {
+export default function Navbar({ children }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const pathname = usePathname();
+  console.log(pathname);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -144,7 +147,8 @@ export default function Navbar({ children, option }) {
             <ListItemButton
               component={NextLink}
               to="/home"
-              selected={"home" === option}
+              //selected pathname: /home, epi and epi/[id]
+              selected={pathname === "/home" || pathname.includes("/epi")}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
@@ -161,6 +165,27 @@ export default function Navbar({ children, option }) {
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+            <ListItemButton
+              component={NextLink}
+              to="/users"
+              selected={pathname.includes("/user")}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Usuários" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>
