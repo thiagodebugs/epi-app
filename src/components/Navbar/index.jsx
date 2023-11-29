@@ -18,7 +18,10 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Tooltip from "@mui/material/Tooltip";
 import NextLink from "next/link";
+import Logo from "@/components/Logo";
 
 const drawerWidth = 240;
 
@@ -101,7 +104,7 @@ export default function Navbar({ children, option }) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} color="inherit">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -115,9 +118,14 @@ export default function Navbar({ children, option }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            MasterEpi
-          </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <Logo />
+          </Box>
+          <Tooltip title="Sair">
+            <IconButton component={NextLink} href="/" color="inherit">
+              <LogoutIcon />
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
